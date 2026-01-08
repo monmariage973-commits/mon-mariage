@@ -15,9 +15,7 @@
       --text: #7a4f53;
       --accent: #e79a96;
       --accent-dark: #c66f6c;
-      --card-bg: #ffffff;
       --btn-text: #ffffff;
-      --shadow: rgba(0,0,0,0.12);
     }
 
     body {
@@ -51,7 +49,6 @@
       margin: 8px 0;
     }
 
-    /* Boutons */
     .btn {
       display: block;
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
@@ -73,47 +70,13 @@
       color: var(--text);
     }
 
-    /* Overlay de chargement */
-    .loading-overlay {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+    /* Bouton WhatsApp vert */
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #1ebe5d);
     }
 
-    .loading-overlay.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .loading-box {
-      background: white;
-      padding: 20px 24px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      font-weight: 600;
-    }
-
-    /* Section Google Form */
-    #confirmation {
-      margin: 60px auto;
-      max-width: 720px;
-      padding: 0 16px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 900px;
-      border: none;
-      border-radius: 20px;
-      box-shadow: 2px 2px 8px var(--shadow);
-      background: white;
+    .btn-whatsapp:hover {
+      color: #ffffff;
     }
   </style>
 </head>
@@ -125,61 +88,30 @@
 
   <div class="details">
     <p>📅 <strong>Date :</strong> 14 Février 2026</p>
-    <p>⏰ <strong>Cérémonie civile :</strong> 12h30 – mairie du Plateau</p>
-    <p>⛪ <strong>Cérémonie religieuse :</strong> 14h00 – Église : Tabernacle la voix de la résurrection</p>
+    <p>⏰ <strong>Cérémonie civile :</strong> 12h30 – Mairie du Plateau</p>
+    <p>⛪ <strong>Cérémonie religieuse :</strong> 14h00 – Église Tabernacle la Voix de la Résurrection</p>
   </div>
 
   <!-- Boutons Localisation -->
   <a href="https://maps.app.goo.gl/HdV9uGgnumG4Foid7?g_st=awb"
-     target="_blank" class="btn">📍 Localisation Mairie</a>
+     target="_blank"
+     class="btn">
+     📍 Localisation Mairie
+  </a>
 
   <a href="https://maps.app.goo.gl/MZjX91a7aJzfVg1P9?g_st=awb"
-     target="_blank" class="btn">📍 Localisation Église</a>
+     target="_blank"
+     class="btn">
+     📍 Localisation Église
+  </a>
 
-  <a href="#confirmation" class="btn">✅ Confirmer ma présence</a>
-
-  <!-- Overlay -->
-  <div id="loadingOverlay" class="loading-overlay">
-    <div class="loading-box">Veuillez patienter…</div>
-  </div>
-
-  <!-- Google Form intégré -->
-  <section id="confirmation">
-    <h3>Confirmez votre présence</h3>
-
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSekWjdgDXXgi7WKYzYbrdFkU0o-VXsI886cPUezMHaj6zuKUA/viewform?embedded=true">
-      Chargement…
-    </iframe>
-  </section>
-
-  <!-- Script -->
-  <script>
-    (function () {
-      const overlay = document.getElementById('loadingOverlay');
-
-      function showOverlay() {
-        overlay.classList.add('show');
-      }
-
-      function hideOverlay() {
-        overlay.classList.remove('show');
-      }
-
-      document.querySelectorAll('a.btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          const href = btn.getAttribute('href');
-          if (href.startsWith('#')) return;
-          e.preventDefault();
-          showOverlay();
-          setTimeout(() => {
-            window.open(href, btn.target || '_self');
-            hideOverlay();
-          }, 800);
-        });
-      });
-    })();
-  </script>
+  <!-- Bouton Confirmation WhatsApp -->
+  <a
+    href="https://wa.me/22547293621?text=Bonjour%20Marcellin%20et%20Colombe%2C%0AJe%20confirme%20ma%20présence%20au%20mariage%20du%2014%20février%202026.%20Merci%20🙏"
+    target="_blank"
+    class="btn btn-whatsapp">
+    💬 Confirmer ma présence via WhatsApp
+  </a>
 
 </body>
 </html>
